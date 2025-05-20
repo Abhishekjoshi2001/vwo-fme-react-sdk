@@ -47,6 +47,11 @@ jobs:
       - name: Install dependencies
         run: |
           yarn add react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }}
+          
+          # Use compatible version of @testing-library/react for React < 18
+          if [[ "${{ matrix.react-version }}" =~ ^16.* || "${{ matrix.react-version }}" =~ ^17.* ]]; then
+            yarn add @testing-library/react@12
+          fi
           yarn install
 
       - name: Run tests

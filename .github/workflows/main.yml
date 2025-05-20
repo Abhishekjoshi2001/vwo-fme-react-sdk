@@ -46,8 +46,8 @@ jobs:
           fi
       - name: Install dependencies
         run: |
-          yarn install
           yarn add react@${{ matrix.react-version }} react-dom@${{ matrix.react-version }}
+          yarn install
 
       - name: Run tests
         run: yarn test:coverage
